@@ -32,16 +32,6 @@ class App extends Component {
             <h2>Click</h2>
             <OnClickExample />
 
-            <hr />
-
-            <h2>Compose all the things!</h2>
-
-            <OnMouseOverTooltip tooltip={tooltip}>
-              <OnClickTooltip tooltip={tooltip}>
-                <button className="sample-btn">Trigger Tooltip</button>
-              </OnClickTooltip>
-            </OnMouseOverTooltip>
-
           </div>
         </div>
 
