@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Tooltip } from '../SimpleTooltip';
-import '../SimpleTooltip/Tooltip.css';
+import StaticExample from './Static';
 import OnMouseOverExample from './OnMouseOver';
 import OnClickExample from './OnClick';
 import './App.css';
@@ -10,14 +9,15 @@ class App extends Component {
     return (
       <div className="App">
         <div className="App-header">
-          <h1>React Tooltip</h1>
+          <h1>React SimpleTooltip</h1>
           <div className="App-intro"></div>
         </div>
 
         <div className="container">
           <div>
             <h2>Static</h2>
-            <Tooltip><em><strong>Hey,</strong></em> I am a tooltip!</Tooltip>
+
+            <StaticExample />
 
             <hr />
 

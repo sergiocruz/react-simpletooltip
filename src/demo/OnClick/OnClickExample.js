@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-import {Tooltip, OnClickTooltip, OnMouseOverTooltip} from '../../SimpleTooltip';
+import { Tooltip, OnClickTooltip } from '../../SimpleTooltip';
+
+import Highlight from 'react-highlight';
+import 'highlight.js/styles/monokai-sublime.css';
+
+let sampleCode = '';
 
 export class OnClickExample extends Component {
   render() {
@@ -14,13 +19,26 @@ export class OnClickExample extends Component {
       <div>
         You can also trigger the tooltip by clicking: {' '}
 
-        <OnMouseOverTooltip tooltip={tooltip}>
-          <OnClickTooltip tooltip={tooltip}>
-            <button className="sample-btn">Trigger Tooltip</button>
-          </OnClickTooltip>
-        </OnMouseOverTooltip>
+        <OnClickTooltip tooltip={tooltip}>
+          <button className="sample-btn">Trigger Tooltip</button>
+        </OnClickTooltip>
 
+        <p className="sourcecode">Source Code:</p>
+        <Highlight>{sampleCode}</Highlight>
       </div>
     );
   }
 }
+
+sampleCode = `function OnMouseOverExample() {
+  const tooltip = (
+    <Tooltip>You have <strong>summuned</strong> me?</Tooltip>
+  );
+
+  return (
+    <OnClickTooltip tooltip={tooltip}>
+      <button className="sample-btn">Trigger Tooltip</button>
+    </OnClickTooltip>
+  );
+}
+`;

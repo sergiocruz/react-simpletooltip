@@ -73,3 +73,9 @@ hr {
 .sample-btn:active {
   background-color: #1559d4;
 }
+
+.sourcecode {
+  color: #969696;
+  font-size: .8em;
+  margin: 2em 0 0 0;
+}
