@@ -3,11 +3,11 @@ import { join } from 'path';
 const include = join(__dirname, '../src');
 
 export default {
-  entry: './src/Logbook',
+  entry: './src/SimpleTooltip',
   output: {
     path: join(__dirname, '../dist'),
     libraryTarget: 'umd',
-    library: 'Logbook',
+    library: 'SimpleTooltip',
   },
   devtool: 'source-map',
   externals: {

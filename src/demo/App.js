@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import { Tooltip, OnMouseOverTooltip, OnClickTooltip } from '../Tooltip';
+import { Tooltip } from '../SimpleTooltip';
+import '../SimpleTooltip/Tooltip.css';
 import OnMouseOverExample from './OnMouseOver';
 import OnClickExample from './OnClick';
 import './App.css';
 
 class App extends Component {
   render() {
-    const tooltip = (
-      <Tooltip>Do you even compose?</Tooltip>
-    );
-
     return (
       <div className="App">
         <div className="App-header">

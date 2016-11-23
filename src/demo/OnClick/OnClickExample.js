@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Tooltip, OnClickTooltip, OnMouseOverTooltip} from '../../Tooltip';
+import {Tooltip, OnClickTooltip, OnMouseOverTooltip} from '../../SimpleTooltip';
 
 export class OnClickExample extends Component {
   render() {

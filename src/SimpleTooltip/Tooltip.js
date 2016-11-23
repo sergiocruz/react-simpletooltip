@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import './Tooltip.css';
 
 export function Tooltip(props) {
   const {
