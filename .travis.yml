@@ -1,0 +1,25 @@
+sudo: false
+language: node_js
+cache:
+  directories:
+    - node_modules
+notifications:
+  email: false
+node_js:
+  - '6.7.0'
+before_install:
+  - npm i -g npm@^3.10.0
+before_script:
+  - npm prune
+  - git config --global user.name "Travis-CI"
+  - git config --global user.email "hello@sergiocruz.me"
+script:
+  - npm test
+  - npm run build:release
+  - node config/clean.js
+  - npm run deploy
+after_success:
+  - npm run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/

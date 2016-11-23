@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+}
+
+.App {
+}
+
+.App-header {
+  background-color: #222;
+  color: white;
+  margin-bottom: 2em;
+  padding: 1em;
+  text-align: center;
+}
+
+.App-intro {
+  padding: 0em 0 .5em;
+  font-size: large;
+}
+
+.App-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.App-menu li {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.App-menu li ~ li {
+  padding-left: .5em;
+}
+
+.App-menu li a {
+  color: #999999;
+}
+
+.App-menu li a:hover {
+  text-decoration: none;
+}
+
+.App-menu li a.active {
+  color: #FFFFFF;
+}
+
+.container {
+  margin: auto;
+  width: 100%;
+  max-width: 600px;
+  padding: 0 20px;
+}
+
+hr {
+  margin: 3em 0;
+  border: none;
+  border-top: 2px solid #eee;
+}
+
+.sample-btn {
+  background-color: #0c3071;
+  border-radius: .5em;
+  border: none;
+  color: white;
+  cursor: pointer;
+  outline: none;
+  padding: .6em .9em;
+  transition: all 150ms ease;
+}
+
+.sample-btn:active {
+  background-color: #1559d4;
+}

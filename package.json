@@ -1,0 +1,71 @@
+{
+  "name": "react-simpletooltip",
+  "description": "React component that helps you easily display a tooltip.",
+  "main": "dist/commonjs/index.js",
+  "homepage": "https://sergiocruz.github.io/react-simpletooltip",
+  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "lint": "eslint src",
+    "build:demo": "react-scripts build",
+    "prebuild:release": "rimraf dist && npm run lint",
+    "build:release": "npm-run-all --parallel build:release:*",
+    "build:release:commonjs": "NODE_ENV='production' babel --copy-files --out-dir dist/commonjs --ignore *.test.js src/Logbook",
+    "build:release:browser": "NODE_ENV='production' webpack --config config/webpack.config.babel.js --output-filename browser/Logbook.min.js -p",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "deploy": "npm run build:demo&&gh-pages --silent --repo https://$GH_TOKEN@github.com/sergiocruz/react-simpletooltip.git -d build",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "commit": "git-cz"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sergiocruz/react-simpletooltip.git"
+  },
+  "devDependencies": {
+    "axios": "^0.15.2",
+    "babel-cli": "^6.18.0",
+    "babel-eslint": "^7.1.0",
+    "babel-loader": "^6.2.7",
+    "babel-preset-react-app": "^1.0.0",
+    "commitizen": "^2.8.6",
+    "cz-conventional-changelog": "^1.2.0",
+    "eslint": "^3.9.1",
+    "eslint-config-react-app": "^0.3.0",
+    "eslint-plugin-flowtype": "^2.25.0",
+    "eslint-plugin-import": "^2.1.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.6.0",
+    "gh-pages": "^0.11.0",
+    "json-loader": "^0.5.4",
+    "npm-run-all": "^3.1.1",
+    "react-dom": "^15.3.2",
+    "react-highlight": "^0.9.0",
+    "react-router": "^3.0.0",
+    "react-scripts": "0.7.0",
+    "semantic-release": "^4.3.5",
+    "webpack": "^1.13.3"
+  },
+  "dependencies": {
+    "moment": "^2.15.2",
+    "radium": "^0.18.1",
+    "react": "^15.3.2"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  }
+}
