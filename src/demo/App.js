@@ -18,6 +18,12 @@ class App extends Component {
         </div>
 
         <div className="container">
+
+          <p className="intro">
+            This is a live demo for the <code><a href={repoUrl}>react-simpletooltip</a></code> project.
+            If you would like to give it a try, run <code>npm install react-simpletooltip</code> to get started.
+          </p>
+
           <div>
             <h2>Static</h2>
 

@@ -14,6 +14,13 @@
   text-decoration: none;
 }
 
+.App .intro {
+  line-height: 1.65;
+  font-size: 1.1em;
+  font-weight: 100;
+  color: #666;
+}
+
 .App-header {
   background-color: #222;
   color: white;
@@ -63,7 +70,7 @@
 .container {
   margin: auto;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   padding: 0 20px;
 }
 
@@ -92,4 +99,21 @@ hr {
   color: #969696;
   font-size: .8em;
   margin: 2em 0 0 0;
+}
+
+.react-simpletooltip + .react-simpletooltip {
+  margin-left: 1em;
+}
+
+code {
+  border: 1px solid #eee;
+  padding: .2em .6em;
+  background: #F5F5F5;
+  color: #f92672;
+  border-radius: .3em;
+  margin: 0 .2em;
+}
+
+.App code a {
+  color: #f92672;
 }
