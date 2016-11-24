@@ -8,7 +8,6 @@ let sampleCode = '';
 
 export class OnMouseOverExample extends Component {
   render() {
-
     const tooltip = (
       <Tooltip>
         Hello <strong>from</strong> Tooltip

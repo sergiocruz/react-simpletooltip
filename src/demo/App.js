@@ -4,13 +4,17 @@ import OnMouseOverExample from './OnMouseOver';
 import OnClickExample from './OnClick';
 import './App.css';
 
+const repoUrl = 'https://github.com/sergiocruz/react-simpletooltip';
+
 class App extends Component {
   render() {
     return (
       <div className="App">
         <div className="App-header">
           <h1>React SimpleTooltip</h1>
-          <div className="App-intro"></div>
+          <div className="App-intro">
+            <a href={repoUrl}>{repoUrl}</a>
+          </div>
         </div>
 
         <div className="container">
