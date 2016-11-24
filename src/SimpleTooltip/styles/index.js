@@ -13,15 +13,15 @@ export function getStyles(opts = {}) {
       cursor: 'default',
       display: 'inline-block',
       fontSize: '.8em',
-      lineHeight: '1.6',
+      lineHeight: 1.6,
       maxWidth: '20em',
       padding: '.4em .6em',
       position: 'relative',
       textShadow: textShadow,
       dynamicPositioning: {
         position: 'absolute',
-        left: '0',
-        top: '0',
+        left: 0,
+        top: 0,
       }
     },
 
@@ -31,13 +31,13 @@ export function getStyles(opts = {}) {
       borderTopColor: bgColor,
       borderWidth: '5px 5px 0',
       bottom: '-5px',
-      content: ' ',
+      content: '\\00a0',
       display: 'block',
-      height: '0',
+      height: 0,
       left: '.8em',
       marginLeft: '-5px',
       position: 'absolute',
-      width: '0',
+      width: 0,
     },
   };
 }
