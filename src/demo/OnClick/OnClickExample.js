@@ -10,7 +10,7 @@ export class OnClickExample extends Component {
   render() {
 
     const tooltip = (
-      <Tooltip>
+      <Tooltip styleOptions={{bgColor: 'rgba(105, 10, 93, .8)'}}>
         You have <strong>summuned</strong> me?
       </Tooltip>
     );
@@ -32,7 +32,9 @@ export class OnClickExample extends Component {
 
 sampleCode = `function OnMouseOverExample() {
   const tooltip = (
-    <Tooltip>You have <strong>summuned</strong> me?</Tooltip>
+    <Tooltip styleOptions={{bgColor: 'rgba(105, 10, 93, .8)'}}>
+      You have <strong>summuned</strong> me?
+    </Tooltip>
   );
 
   return (
