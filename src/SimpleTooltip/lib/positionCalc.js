@@ -1,4 +1,4 @@
-const EXTRA_PAD = 7;
+const EXTRA_PAD = 10;
 
 function topPosition(el) {
   const tooltip = el.firstChild;
