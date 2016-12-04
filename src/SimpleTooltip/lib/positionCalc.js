@@ -7,7 +7,6 @@ function topPosition(el) {
   top -= tooltip.offsetHeight;
   top -= EXTRA_PAD;
   return top;
-
 }
 
 function leftPosition(el) {

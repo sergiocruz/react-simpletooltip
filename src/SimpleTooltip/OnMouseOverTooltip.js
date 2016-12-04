@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import { topPosition, leftPosition } from './lib/positionCalc';
+import { DynamicPositionTooltip } from './DynamicPositionTooltip';
 
 let showTimer = null;
 let hideTimer = null;
@@ -64,14 +65,9 @@ export class OnMouseOverTooltip extends Component {
   }
 
   render() {
-    const tooltip = React.cloneElement(this.props.tooltip, {
-      dynamicPositioning: true,
-      top: this.state.top,
-      left: this.state.left,
-      isShowing: this.state.isShowing,
-    });
+    const { top, left, isShowing } = this.state;
 
-    const overlayable = React.cloneElement(this.props.children, {
+    const overlayableComponent = React.cloneElement(this.props.children, {
       onMouseEnter: this.onOverlay,
       onMouseLeave: this.offOverlay,
     });
@@ -79,12 +75,12 @@ export class OnMouseOverTooltip extends Component {
     return (
       <span>
         {
-          this.state.isShowing
-            ? tooltip
+          isShowing
+            ? <DynamicPositionTooltip top={top} left={left} {...this.props} />
             : null
         }
 
-        {overlayable}
+        {overlayableComponent}
       </span>
     );
   }

@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 import { topPosition, leftPosition } from './lib/positionCalc';
+import { DynamicPositionTooltip } from './DynamicPositionTooltip';
 
 export class OnClickTooltip extends Component {
 
@@ -37,27 +38,21 @@ export class OnClickTooltip extends Component {
   }
 
   render() {
+    const { top, left, isShowing } = this.state;
 
-    const tooltip = React.cloneElement(this.props.tooltip, {
-      dynamicPositioning: true,
-      top: this.state.top,
-      left: this.state.left,
-      isShowing: this.state.isShowing,
-    });
-
-    const clickable = React.cloneElement(this.props.children, {
+    const clickableComponent = React.cloneElement(this.props.children, {
       onClick: this.toggleTooltip,
     });
 
     return (
       <span>
         {
-          this.state.isShowing
-            ? tooltip
+          isShowing
+            ? <DynamicPositionTooltip top={top} left={left} {...this.props} />
             : null
         }
 
-        {clickable}
+        {clickableComponent}
       </span>
     );
   }
