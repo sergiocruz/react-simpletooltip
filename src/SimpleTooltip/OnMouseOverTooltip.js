@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import DynamicPositionTooltip from './DynamicPositionTooltip';
+import TooltipWrapper from './TooltipWrapper';
 import { findDOMNode } from 'react-dom';
-import { topPosition, leftPosition } from './lib/positionCalc';
-import { DynamicPositionTooltip } from './DynamicPositionTooltip';
+import { getCoordinates } from './lib/positionElement';
 
 let showTimer = null;
 let hideTimer = null;
@@ -12,11 +13,13 @@ export class OnMouseOverTooltip extends Component {
     tooltip: PropTypes.node.isRequired,
     showDelay: PropTypes.number.isRequired,
     hideDelay: PropTypes.number.isRequired,
+    position: PropTypes.string.isRequired,
   }
 
   static defaultProps = {
     showDelay: 150,
     hideDelay: 400,
+    position: 'top',
   }
 
   constructor() {
@@ -34,10 +37,11 @@ export class OnMouseOverTooltip extends Component {
 
   positionTooltip() {
     const el = findDOMNode(this);
+    const coordinates = getCoordinates(el, this.props.position);
 
     this.setState({
-      top: topPosition(el),
-      left: leftPosition(el),
+      top: coordinates.top,
+      left: coordinates.left,
     });
   }
 
@@ -73,7 +77,7 @@ export class OnMouseOverTooltip extends Component {
     });
 
     return (
-      <span>
+      <TooltipWrapper>
         {
           isShowing
             ? <DynamicPositionTooltip top={top} left={left} {...this.props} />
@@ -81,7 +85,7 @@ export class OnMouseOverTooltip extends Component {
         }
 
         {overlayableComponent}
-      </span>
+      </TooltipWrapper>
     );
   }
 }
