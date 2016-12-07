@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import DynamicPositionTooltip from './DynamicPositionTooltip';
+import TooltipWrapper from './TooltipWrapper';
 import { findDOMNode } from 'react-dom';
-import { topPosition, leftPosition } from './lib/positionCalc';
+import { getCoordinates } from './lib/positionElement';
 
 let showTimer = null;
 let hideTimer = null;
@@ -11,11 +13,13 @@ export class OnMouseOverTooltip extends Component {
     tooltip: PropTypes.node.isRequired,
     showDelay: PropTypes.number.isRequired,
     hideDelay: PropTypes.number.isRequired,
+    position: PropTypes.string.isRequired,
   }
 
   static defaultProps = {
     showDelay: 150,
     hideDelay: 400,
+    position: 'top',
   }
 
   constructor() {
@@ -33,10 +37,11 @@ export class OnMouseOverTooltip extends Component {
 
   positionTooltip() {
     const el = findDOMNode(this);
+    const coordinates = getCoordinates(el, this.props.position);
 
     this.setState({
-      top: topPosition(el),
-      left: leftPosition(el),
+      top: coordinates.top,
+      left: coordinates.left,
     });
   }
 
@@ -64,28 +69,23 @@ export class OnMouseOverTooltip extends Component {
   }
 
   render() {
-    const tooltip = React.cloneElement(this.props.tooltip, {
-      dynamicPositioning: true,
-      top: this.state.top,
-      left: this.state.left,
-      isShowing: this.state.isShowing,
-    });
+    const { top, left, isShowing } = this.state;
 
-    const overlayable = React.cloneElement(this.props.children, {
+    const overlayableComponent = React.cloneElement(this.props.children, {
       onMouseEnter: this.onOverlay,
       onMouseLeave: this.offOverlay,
     });
 
     return (
-      <span>
+      <TooltipWrapper>
         {
-          this.state.isShowing
-            ? tooltip
+          isShowing
+            ? <DynamicPositionTooltip top={top} left={left} {...this.props} />
             : null
         }
 
-        {overlayable}
-      </span>
+        {overlayableComponent}
+      </TooltipWrapper>
     );
   }
 }

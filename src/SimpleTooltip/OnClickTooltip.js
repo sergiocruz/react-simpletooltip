@@ -1,11 +1,18 @@
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
-import { topPosition, leftPosition } from './lib/positionCalc';
+import DynamicPositionTooltip from './DynamicPositionTooltip';
+import TooltipWrapper from './TooltipWrapper';
+import { getCoordinates } from './lib/positionElement';
 
 export class OnClickTooltip extends Component {
 
   static propTypes = {
     tooltip: PropTypes.node.isRequired,
+    position: PropTypes.string.isRequired,
+  }
+
+  static defaultProps = {
+    position: 'top',
   }
 
   constructor() {
@@ -22,43 +29,37 @@ export class OnClickTooltip extends Component {
 
   positionTooltip() {
     const el = findDOMNode(this);
+    const coordinates = getCoordinates(el, this.props.position);
 
     this.setState({
-      top: topPosition(el),
-      left: leftPosition(el),
+      top: coordinates.top,
+      left: coordinates.left,
     });
   }
 
   toggleTooltip() {
     this.setState(
       { isShowing: !this.state.isShowing },
-      () => this.positionTooltip()
+      () => this.state.isShowing && this.positionTooltip()
     );
   }
 
   render() {
-
-    const tooltip = React.cloneElement(this.props.tooltip, {
-      dynamicPositioning: true,
-      top: this.state.top,
-      left: this.state.left,
-      isShowing: this.state.isShowing,
-    });
-
-    const clickable = React.cloneElement(this.props.children, {
+    const { top, left, isShowing } = this.state;
+    const clickableComponent = React.cloneElement(this.props.children, {
       onClick: this.toggleTooltip,
     });
 
     return (
-      <span>
+      <TooltipWrapper>
         {
-          this.state.isShowing
-            ? tooltip
+          isShowing
+            ? <DynamicPositionTooltip top={top} left={left} {...this.props} />
             : null
         }
 
-        {clickable}
-      </span>
+        {clickableComponent}
+      </TooltipWrapper>
     );
   }
 }

@@ -28,16 +28,39 @@ export function getStyles(opts = {}) {
     caret: {
       borderColor: 'transparent',
       borderStyle: 'solid',
-      borderTopColor: bgColor,
-      borderWidth: '5px 5px 0',
-      bottom: '-5px',
       content: '\\00a0',
       display: 'block',
       height: 0,
-      left: '.8em',
-      marginLeft: '-5px',
       position: 'absolute',
       width: 0,
+      topTooltip: {
+        borderTopColor: bgColor,
+        borderWidth: '.6em .6em 0 .6em',
+        bottom: '-.5em',
+        left: '.7em',
+      },
+      rightTooltip: {
+        borderRightColor: bgColor,
+        borderWidth: '.6em',
+        bottom: 'calc(50% - 0.6em)',
+        left: '-1.1em',
+      },
+      bottomTooltip: {
+        borderBottomColor: bgColor,
+        borderWidth: '.6em',
+        top: '-1.1em',
+        left: '.7em',
+      },
+      leftTooltip: {
+        borderLeftColor: bgColor,
+        borderWidth: '.6em',
+        bottom: 'calc(50% - 0.6em)',
+        right: '-1.1em',
+      },
     },
+
+    tooltipWrapper: {
+      display: 'inline-block'
+    }
   };
 }
